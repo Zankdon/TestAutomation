@@ -16,6 +16,8 @@ TestCase1
     Click Element    //html/body/div[3]/div/div/div/main/article/div/section/ul/li[1]/div/div[1]/a
     ${price2}    Get Text    //html/body/div[3]/div/div/div[1]/main/article/div/section/div[1]/div[1]/div[1]/span
     Log    Price2: ${price2}
+    ${price}=    Remove String    ${price}    $
+    ${price2}=    Remove String    ${price2}    $
     Should be equal    ${price}    ${price2}
     Log    ${price}==${price2}
 
@@ -29,7 +31,7 @@ TestCase2
 TestCase3
     Open Browser    ${blue_hoodie}    Chrome
     ${modelnumber}    Get Text    //html/body/div[3]/div/div/div[1]/main/article/div/section/div[1]/div[3]/form/div[3]
-    ${modelnumber} =    Remove String    3381370
+    ${modelnumber} =    Remove String    ${modelnumber}    Model Number:
     Log    suitnumber: ${modelnumber}
     Set Suite Variable    ${model_numbers}    ${modelnumber}
     Log    ${model_numbers}
