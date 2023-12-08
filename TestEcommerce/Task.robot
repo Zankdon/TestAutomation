@@ -2,6 +2,7 @@
 Library           SeleniumLibrary
 Library           BuiltIn
 Library           String
+Library           Collections
 
 *** Variables ***
 ${url}            https://academybugs.com/find-bugs/
@@ -25,8 +26,14 @@ TestCase2
     Open Browser    ${url}    Chrome
     Click Element    //html/body/div[3]/div/div/div/main/article/div/section/div[1]/select
     Click Element    //html/body/div[3]/div/div/div/main/article/div/section/div[1]/select/option[2]
-    ${price1}    Get Text    //html/body/div[3]/div/div/div/main/article/div/section/ul/li[1]/div/div[3]/div[1]/span
-    Log    Price1:${price1}
+
+    ${i}=    Set Variable    ${18}
+    WHILE    ${i} > 0
+        ${product_price}=    Get Text    //html/body/div[3]/div/div/div/main/article/div/section/ul/li[${i}]/div/div[3]/div[1]/span
+        Log    ${product_price}
+    ${i}=    Evaluate    ${i} - 1
+    END
+    Log    Lowest Price: ${product_price}
 
 TestCase3
     Open Browser    ${blue_hoodie}    Chrome
