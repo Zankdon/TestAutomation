@@ -6,6 +6,7 @@ Library           String
 *** Variables ***
 ${url}            https://academybugs.com/find-bugs/
 ${url2}           https://academybugs.com/store/professional-suit/
+${blue_hoodie}    https://academybugs.com/store/blue-hoodie/
 
 *** Test Cases ***
 TestCase1
@@ -26,15 +27,15 @@ TestCase2
     Log    Price1:${price1}
 
 TestCase3
-    Open Browser    ${url2}    Chrome
+    Open Browser    ${blue_hoodie}    Chrome
     ${modelnumber}    Get Text    //html/body/div[3]/div/div/div[1]/main/article/div/section/div[1]/div[3]/form/div[3]
-    ${modelnumber} =    Remove String    3981370
+    ${modelnumber} =    Remove String    3381370
     Log    suitnumber: ${modelnumber}
     Set Suite Variable    ${model_numbers}    ${modelnumber}
     Log    ${model_numbers}
 
 TestCase4
-    Open Browser    ${url2}    Chrome
+    Open Browser    ${blue_hoodie}    Chrome
     Log    ${model_numbers}
     Input Text    //html/body/div[3]/div/div/div[2]/aside[2]/div/form/input[1]    ${model_numbers}
     Click Button    //html/body/div[3]/div/div/div[2]/aside[2]/div/form/input[2]
